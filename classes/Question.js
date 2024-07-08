@@ -1,6 +1,6 @@
 class Question {
-    constructor(id, question, answers) {
-      this.id = id;
+    constructor(qid, question, answers) {
+      this.qid = qid;
       this.question = question;
       this.answers = answers;
     }
