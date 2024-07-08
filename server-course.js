@@ -5,6 +5,8 @@ import https from "https"
 import * as dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import routerCategory from "./routes/CategoryRouter.js";
+import routerQuestion from "./routes/RouterQuestion.js";
 
 // import {index3, router2 } from "./routes/routes_get.mjs"
 // import * as routes_get from "./routes/routes_get.mjs"
@@ -31,16 +33,22 @@ dotenv.config();
 
 
 //#region MIDDLEWARE
-
+app.use('/category', routerCategory);
+app.use('/question', routerQuestion);
 //#endregion MIDDLEWARE
+
+
+//#region GET
+app.get('/', (req, res) => {
+    res.render('index', {textIntro:"txt", xml:"xml"})
+});
+//#endregion GET
 
 //#region GET
 app.get('/', (req, res) => {
     res.send('Hello, World! '+new Date().toUTCString());
 });
 //#endregion GET
-
-
 
 
 //#region HTTPS-WEBSERVER

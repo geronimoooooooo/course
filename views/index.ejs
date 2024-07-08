@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head><%- include ('partials/head', {titlePage:"Welcome"}) %></head>
 
 <body class="container">
   <header><%- include ('partials/header') %></header>
   <nav><%- include ('partials/nav') %></nav>
 
-
+  <main>
   <p>
     <%= textIntro %> for Nationalpark
   </p>
+  <p><a href="category/category-display-all">orf adfasdf adf </a></p>
 
   <p>Anleitung</p>
   <ol>
@@ -18,16 +18,9 @@
     <li>Umweltparameter vergleichen</li>
   </ol>
 
-  <main>
+  
 
-    <div class="colorGreen" id="xmlDiv"></div>
-    <script>
-      //const xmlString2 = '<root><person><name>John</name></person></root>';
-
-      let xmlString = '<%= xml %>';
-      const div = document.getElementById('xmlDiv');
-      div.innerHTML = '<pre>' + xmlString.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';        
-    </script>
+  
   </main>
   <footer><%- include('partials/footer') %></footer>
 

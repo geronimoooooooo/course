@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><%- include ('partials/head', {titlePage:"All Categories"}) %></head>
+
+  <body class="container">       
+    <header><%- include ('partials/header') %></header>  
+    <nav><%- include ('partials/nav') %></nav>
+    <main>    
+      <p>I heard you like catagories!</p>
+      <h1>Categories</h1>
+      <ul id="categories">
+        <% categories.forEach(function(category){ %>
+          <li><%= category.name%></li>
+          <ul id="categories">
+            <% category.courses.forEach(function(course){ %>                          
+              
+              <li><%= course%></li>
+            <% }) %>
+          </ul>
+        <% }) %>
+      </ul>
+
+      <h1>Categories2</h1>
+      <ul id="categoryCourses">
+        <% categoryCourses.forEach(function(category){ %>
+          <li><%= category.name%></li>
+          <ul id="categories">
+            <% category.courses.forEach(function(course){ %>               
+              <li><%= course.name%></li>
+              <ul id="categories">
+                <% course.questions.forEach(function(question){ %>               
+                  <li><%= question%></li>
+                  
+                <% }) %>
+              </ul>
+            <% }) %>
+          </ul>
+        <% }) %>
+      </ul>
+
+      <h1>catFull</h1>
+      <ul id="catFull">
+        <% catFull.forEach(function(category){ %>
+          <li><%= category.name%></li>
+          <ul id="categories">
+            <% category.courses.forEach(function(course){ %>               
+              <li><%= course.name%></li>
+              <ul id="categories">
+                <% course.questions.forEach(function(question){ %>               
+                  <li><%= question.question%></li>
+                  <ul id="categories">
+                    <% question.answers.forEach(function(ans){ %>               
+                      <li><%= ans.text%> -- <%=ans.correct%></li>
+                      
+                    <% }) %>
+                  </ul>
+                  
+                <% }) %>
+              </ul>
+            <% }) %>
+          </ul>
+        <% }) %>
+      </ul>
+      
+
+      <p>You picked cat: <%=categoryCourses[0].name %> and question: <%= categoryCourses[0].courses[0].questions[0]%></p>
+    </main>      
+    <footer><%- include('partials/footer') %></footer>
+    
+  </body>
+</html>
