@@ -6,7 +6,10 @@ import * as dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 import routerCategory from "./routes/CategoryRouter.js";
-import routerQuestion from "./routes/RouterQuestion.js";
+import routerQuestion from "./routes/QuestionRouter.js";
+import routerArticle from "./routes/ArticleRouter.js";
+import connectDB from "./db.js";
+import routerCourse from "./routes/CourseRouter.js";
 
 // import {index3, router2 } from "./routes/routes_get.mjs"
 // import * as routes_get from "./routes/routes_get.mjs"
@@ -29,12 +32,15 @@ app.set("view engine", "ejs");
 // app.set("views", __dirname);
 // require('dotenv').config();
 dotenv.config();
+connectDB();
 //#endregion definitions
 
 
 //#region MIDDLEWARE
 app.use('/category', routerCategory);
 app.use('/question', routerQuestion);
+app.use('/article', routerArticle);
+app.use('/c', routerCourse);
 //#endregion MIDDLEWARE
 
 

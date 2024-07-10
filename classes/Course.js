@@ -1,8 +1,9 @@
 class Course {
-    constructor(id, name, questions) {
-      this.id = id;
-      this.name = name;
-      this.questions = questions;
-    }
+  constructor(id, name, questions) {
+    this.cid = id;
+    this.courseName = name;
+    this.questions = questions;
   }
+  
+}
 export default Course
