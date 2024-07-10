@@ -2,6 +2,9 @@ import express, { text } from "express";
 import Category from "../classes/Category.js";
 import Course from "../classes/Course.js";
 import Question from "../classes/Question.js";
+import {routerCourse } from "./CourseRouter.js";
+import {posts} from "../sharedObjects.js";
+
 const routerCategory = express.Router();
 
 routerCategory.get('/' , (req , res)=>{
@@ -16,6 +19,7 @@ endpoint, the callback function `(req, res) => { ... }` will be executed. Inside
 logic to create and manipulate category and course objects, and eventually send a JSON response back to the client with
 the string "catagories3". */
 routerCategory.get('/category-display-all' , (req , res)=>{
+    console.log("posts: "+posts.length);
     let categories2 = ["A","BB", "CCC"];
     let categories = []
     
@@ -27,14 +31,15 @@ routerCategory.get('/category-display-all' , (req , res)=>{
     catagories3.push(new Category(1, "Cat1", [new Course(1,"cat1 Course1",["q1","q2"]), new Course(1,"Cat1 Course2",["q1","q2","q3"])]))
     catagories3.push(new Category(2, "Cat2", [new Course(2,"Cat2Course1",["q1","q2"])]))
     
-    Category.categoriesComplete.push(new Category(2, "Cat2", [new Course(2,"Cat2Course1",[q1])]))
+    // Category.categoriesComplete.push(new Category(2, "Cat2", [new Course(2,"Cat2Course1",[q1])]))
+    // Category.categoriesComplete.push(new Category(3, "Cat3", [new Course(42,"Cat2Course1",[q1])]))
     Category.categoriesComplete.push(new Category(3, "Cat3", [new Course(42,"Cat2Course1",[q1])]))
     console.dir(Category.categoriesComplete, { depth: null });
     console.log(("#########################"));
     let jsonCat = JSON.stringify(Category.categoriesComplete[0]);
     const catObject = Category.fromJSON(jsonCat);
-    console.log(catObject.courses[0]);
-    console.log(jsonCat);
+    // console.log(catObject.courses[0]);
+    // console.log(jsonCat);
     
     res.render('category-display-all',{categories: categories, categoryCourses:catagories3, catFull: Category.categoriesComplete})
 })

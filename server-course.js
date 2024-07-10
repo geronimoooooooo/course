@@ -9,7 +9,7 @@ import routerCategory from "./routes/CategoryRouter.js";
 import routerQuestion from "./routes/QuestionRouter.js";
 import routerArticle from "./routes/ArticleRouter.js";
 import connectDB from "./db.js";
-import routerCourse from "./routes/CourseRouter.js";
+import {routerCourse} from "./routes/CourseRouter.js";
 
 // import {index3, router2 } from "./routes/routes_get.mjs"
 // import * as routes_get from "./routes/routes_get.mjs"

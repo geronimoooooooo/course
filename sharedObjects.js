@@ -1,0 +1,4 @@
+let posts = [];
+
+
+export {posts}

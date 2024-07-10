@@ -2,9 +2,12 @@ import express from "express";
 import CourseModel from "../models/CourseModel.js";
 import Course from "../classes/Course.js";
 import QuestionModel from "../models/QuestionModel.js";
+import {posts} from "../sharedObjects.js";
 // import ArticleModel from "../models/ArticleModel.js";
 // import { User } from "./models/users.js";
 const routerCourse = express.Router();
+
+
 
 routerCourse.get("/", (req, res) => {
   res.send("you love courses.");
@@ -53,7 +56,7 @@ routerCourse.get("/courses", async (req, res) => {
   // });
 
   console.log("called22222222222222222222222222222")
-  const posts = await CourseModel.find().populate('questions');
+  posts = await CourseModel.find().populate('questions');
   console.log("posts:" +posts);
     // let courses = await CourseModel.find({});
     // console.log(courses);
@@ -69,4 +72,4 @@ routerCourse.get("/courses", async (req, res) => {
   }
 });
 
-export default routerCourse;
+export { routerCourse, posts}
