@@ -5,6 +5,7 @@ import https from "https"
 import * as dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import {routerIndex, loggingRequestsAsMw} from "./routes/IndexRouter.js";
 import routerCategory from "./routes/CategoryRouter.js";
 import routerQuestion from "./routes/QuestionRouter.js";
 import routerArticle from "./routes/ArticleRouter.js";
@@ -37,17 +38,20 @@ connectDB();
 
 
 //#region MIDDLEWARE
-app.use('/category', routerCategory);
-app.use('/question', routerQuestion);
+// NOTE : Write Middleware logger Function above all Routes
+app.use(loggingRequestsAsMw)
+app.use('/', routerIndex);
+app.use('/cat', routerCategory);
+app.use('/q', routerQuestion);
 app.use('/article', routerArticle);
 app.use('/c', routerCourse);
 //#endregion MIDDLEWARE
 
 
 //#region GET
-app.get('/', (req, res) => {
-    res.render('index', {textIntro:"txt", xml:"xml"})
-});
+// app.get('/', (req, res) => {
+//     res.render('index', {textIntro:"txt", xml:"xml"})
+// });
 //#endregion GET
 
 //#region GET
