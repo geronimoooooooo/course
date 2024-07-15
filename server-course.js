@@ -96,10 +96,10 @@ const credentials = {
     if(err){
       console.log("Error: ", err);
       console.log(new Date().toISOString()+` https server could not start on port: ${portHTTPS}`);
+      console.log(new Date().toISOString()+` maybe stop local Tomcat`);
     }else{
       console.log(new Date().toISOString()+` https server running on port: ${portHTTPS}`);
       console.log(new Date().toISOString()+` call: https://ispacevmXX.researchstudio.at or https://localhost/`);
-      console.log(new Date().toISOString()+` maybe stop local Tomcat`);
     }
   });
   //#endregion

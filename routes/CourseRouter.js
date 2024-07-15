@@ -13,7 +13,7 @@ routerCourse.get("/", (req, res) => {
   res.send("you love courses.");
 });
 
-routerCourse.get("/create", async (req, res) => {
+routerCourse.post("/create", async (req, res) => {
   // { "cid": 1, "courseName": "Kurs2", "questions": [ "668d935d5bf7038908f29bec", "668d94415bf7038908f29bf2" ] }
 
   // let course = new Course();
@@ -56,5 +56,40 @@ async function getCourses(req, res){
     res.status(500).send({ error });
   }
 }
+
+routerCourse.get('/c/:id', async (req, res)=>{
+  try {
+    // const {id} = req.body;
+    const {id} = req.params;
+    console.log(id);
+    const course = await CourseModel.findById(id);
+    console.log(course);
+    // res.status(200).json({ message: "Course found successfully" });
+    res.status(200).json(course);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})
+
+routerCourse.delete('/c/:id', async (req, res)=>{
+  try {
+    const {id} = req.params;
+    // const {id} = req.body;
+    console.log(id);
+    const course = await CourseModel.findById(id);
+    
+    if(!course){
+      return res.status(404).json({ message: "Course not found" });
+    }
+    console.log(course)
+    const courseDel = await CourseModel.findByIdAndDelete(id);    
+    res.status(200).json({ message: "Course deleted successfully" });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})
+
+
 
 export { routerCourse };
