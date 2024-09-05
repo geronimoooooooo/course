@@ -23,14 +23,14 @@ app.get('/api/resources', (req, res) => {
 
 // Read a specific resource by ID http://localhost:3000/api/resources/:id
 app.get('/api/resources/:id', (req, res) => {
- const resourceId = parseInt(req.params.id);
- const resource = resources.find((r) => r.id === resourceId);
+  const resourceId = parseInt(req.params.id);
+  const resource = resources.find((r) => r.id === resourceId);
 
- if (resource) {
- res.json(resource);
- } else {
- res.status(404).json({ error: 'Resource not found' });
- }
+  if (resource) {
+    res.json(resource);
+  } else {
+    res.status(404).json({ error: 'Resource not found' });
+  }
 });
 
 // Create a new resource http://localhost:3000/api/resources
@@ -45,9 +45,8 @@ app.put('/api/resources/:id', (req, res) => {
  const resourceId = parseInt(req.params.id);
  const updatedResource = req.body;
 
- resources = resources.map((r) =>
- r.id === resourceId ? { ...r, ...updatedResource } : r
- );
+ resources = resources.map(
+  (r) => r.id === resourceId ? { ...r, ...updatedResource } : r );
 
  res.json({ message: 'Resource updated successfully' });
 });

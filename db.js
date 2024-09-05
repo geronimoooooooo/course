@@ -1,5 +1,6 @@
 // blog_app/config/db.js
 
+//have own file and call connectDB()
 import mongoose from "mongoose";
 
 export default function connectDB() {
@@ -9,6 +10,7 @@ export default function connectDB() {
   try {
     mongoose.connect(url, {
       useNewUrlParser: true,
+      useCreateIndex: true,
       useUnifiedTopology: true,
     });
   } catch (err) {
